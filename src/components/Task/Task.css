@@ -4,4 +4,10 @@
 
 .todo {
     color:red;
+    cursor: pointer;
 }
+
+.todo:hover{
+    color: blue;
+}
+
