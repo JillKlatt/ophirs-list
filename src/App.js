@@ -7,71 +7,68 @@ import SingleItem from './components/Task/SingleItem'
 
 function App() {
 
-const [toDoList, setToDoList] = useState(data)
-//let first = toDoList.find(task => !task.complete)
-let completed = toDoList.filter(task => !task.complete)
+  const [toDoList, setToDoList] = useState(data)
 
-const [showCompleted, setShowCompleted] = useState(true)
-const [stressed, setStressed] = useState(false)
-const [random, setRandom] = useState(completed[Math.floor(Math.random(0, completed.length) * 10)])
+  let inCompleted = toDoList.filter(task => !task.complete)
 
-const addTask = (input) => {
-  let updatedList = [...toDoList]
-  updatedList = [...updatedList, { id: toDoList.length + 1, task: input, complete: false}]
-  setToDoList(updatedList)
-}
+  console.log(inCompleted)
+  const [showCompleted, setShowCompleted] = useState(true)
+  const [stressed, setStressed] = useState(false)
+  const addTask = (input) => {
+    setToDoList([...toDoList, { id: toDoList.length + 1, task: input, complete: false }])
+  }
 
-const handleToggle = (id) => {
-  let mapped = toDoList.map(task => {
-    return task.id == id ? { ...task, complete: !task.complete } : { ...task};
+  const handleToggle = (id) => {
+
+    let mapped = toDoList.map(task => {
+      // eslint-disable-next-line
+      return task.id == id ? { ...task, complete: !task.complete } : { ...task };
     });
-    console.log(mapped)
 
-  setToDoList(mapped);
-}
-
-const completeNewRandom = (id) => {
-  handleToggle(id)
-  setRandom(completed[Math.floor(Math.random(0, completed.length) * 10)])
-  handleStressed(random)
-}
-
-const handleFilter = () => {  
-  if (showCompleted){
-  let filtered = toDoList.filter(task => {
-    return !task.complete})
-  setToDoList(filtered)}
-  else {
-    setToDoList(data)
+    setToDoList(mapped);
   }
-}
 
-const toggleStressed = () => {
-  stressed ? setStressed(false) : setStressed(true)
-}
 
-const changeRandom = () => {
-  setRandom(completed[Math.floor(Math.random(0, completed.length) * 10)])
-}
-
-const handleStressed = (random) => {
-  if (stressed){
-    // let random = completed[Math.floor(Math.random(0, completed.length) * 10)]
-    return <SingleItem todo={random} changeRandom={changeRandom} handleToggle={handleToggle} completeNewRandom={completeNewRandom}/>
-  }else{
-   return <List toDoList={toDoList} handleFilter={handleFilter} handleToggle={handleToggle} addTask={addTask} showCompleted={showCompleted} setShowCompleted={setShowCompleted}/>
+  const completeNewRandom = (id) => {
+    handleToggle(id)
+    handleStressed()
   }
-}
 
+  const handleFilter = () => {
+    if (showCompleted) {
+      let filtered = toDoList.filter(task => {
+        return !task.complete
+      })
+      setToDoList(filtered)
+    }
+    else {
+      setToDoList(data)
+    }
+  }
+
+  const toggleStressed = () => {
+    stressed ? setStressed(false) : setStressed(true)
+  }
+
+  const handleStressed = () => {
+    if (stressed) {
+      return <SingleItem inCompleted={inCompleted} handleToggle={handleToggle} completeNewRandom={completeNewRandom} />
+    } else {
+      return <List toDoList={toDoList} handleFilter={handleFilter} handleToggle={handleToggle} addTask={addTask} showCompleted={showCompleted} setShowCompleted={setShowCompleted} />
+    }
+  }
 
   return (
     <div className="App">
       <Header />
-      {handleStressed(random)}
+      {handleStressed()}
       <button onClick={toggleStressed}>{stressed === false ? "THIS IS TOO MUCH" : "Show it all"}</button>
     </div>
   );
 }
 
 export default App;
+
+
+
 
