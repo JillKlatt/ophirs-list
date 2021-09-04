@@ -11,7 +11,7 @@ const List = ({toDoList, handleToggle, handleFilter, addTask, showCompleted, set
     return (
         <div>
             {toDoList.map(todo => {
-                return <Task todo={todo} handleToggle={handleToggle} />
+                return <Task key={todo.id} todo={todo} handleToggle={handleToggle} />
             })}
             <button style={{margin: `20px`}} onClick={toggleCompleted}>{showCompleted ? "Clear Completed" : "Show Completed"}</button>
             <Form addTask={addTask} />
