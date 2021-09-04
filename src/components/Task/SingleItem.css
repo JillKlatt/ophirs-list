@@ -1,3 +1,10 @@
 .single-item {
-    
+    font-size: 40px;
 }
+
+.single-item:hover {
+    text-decoration:overline;
+}
+
+
+
