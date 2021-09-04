@@ -7,6 +7,7 @@ import SingleItem from './components/Task/SingleItem'
 
 function App() {
 
+
   const [toDoList, setToDoList] = useState(data)
 
   let inCompleted = toDoList.filter(task => !task.complete)
@@ -29,7 +30,7 @@ function App() {
   }
 
 
-  const completeNewRandom = (id) => {
+  const deleteTask = (id) => {
     handleToggle(id)
     handleStressed()
   }
@@ -52,7 +53,7 @@ function App() {
 
   const handleStressed = () => {
     if (stressed) {
-      return <SingleItem inCompleted={inCompleted} handleToggle={handleToggle} completeNewRandom={completeNewRandom} />
+      return <SingleItem inCompleted={inCompleted} handleToggle={handleToggle} deleteTask={deleteTask} />
     } else {
       return <List toDoList={toDoList} handleFilter={handleFilter} handleToggle={handleToggle} addTask={addTask} showCompleted={showCompleted} setShowCompleted={setShowCompleted} />
     }
@@ -62,7 +63,7 @@ function App() {
     <div className="App">
       <Header />
       {handleStressed()}
-      <button onClick={toggleStressed}>{stressed === false ? "THIS IS TOO MUCH" : "Show it all"}</button>
+      <button className={stressed === false ? 'btn-two' : 'glow-on-hover'} id={stressed === false ? "panic" : "chill"}onClick={toggleStressed}>{stressed === false ? "THIS IS TOO MUCH" : "Show it all"}</button>
     </div>
   );
 }
