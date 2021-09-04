@@ -1,18 +1,21 @@
+import './SingleItem.css'
+import { useState } from 'react'
 
+export default function SingleItem({inCompleted, deleteTask}) {
 
-export default function SingleItem({inCompleted, completeNewRandom}) {
-    let todo
-    
+    let number = Math.floor(Math.random(0, inCompleted.length - 1) * 10)
+    const [todo, setTodo] = useState(inCompleted[number])
+
     const findRandom = () => {
-        let number = Math.floor(Math.random(0, inCompleted.length - 1) * 10)
-        console.log("current number:", number, "inCompleted:", inCompleted)
-        todo = inCompleted[number]
+        number = Math.floor(Math.random(0, inCompleted.length - 1) * 10)
+        setTodo(inCompleted[number])
     }
 
-    findRandom()
 
     const completeTask = () => {
-        completeNewRandom(todo.id)
+        console.log(todo)
+        deleteTask(todo.id)
+        findRandom()
     }
 
     if (inCompleted.length === 1){
@@ -22,7 +25,6 @@ export default function SingleItem({inCompleted, completeNewRandom}) {
             </div>
         )
     }
-
 
     return (
         <div>
