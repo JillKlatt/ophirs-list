@@ -3,11 +3,11 @@
 }
 
 .todo {
-    color:red;
+    color:rgb(148, 146, 146);
     cursor: pointer;
 }
 
 .todo:hover{
-    color: blue;
+    color: rgb(102, 132, 150);
 }
 
