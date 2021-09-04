@@ -1,6 +1,6 @@
 [{
     "id": 1,
-    "task": "Give dog a bath",
+    "task": "Give Maggie a bath",
     "complete": true
   }, {
     "id": 2,
@@ -12,19 +12,19 @@
     "complete": false
   }, {
     "id": 4,
-    "task": "Feed cat",
+    "task": "Fold Laundry",
     "complete": true
   }, {
     "id": 5,
-    "task": "Change light bulbs",
+    "task": "Hard Drive",
     "complete": false
   }, {
     "id": 6,
-    "task": "Go to Store",
+    "task": "Costco",
     "complete": true
   }, {
     "id": 7,
-    "task": "Fill gas tank",
+    "task": "Deep clean bathtub",
     "complete": true
   }, {
     "id": 8,
@@ -60,7 +60,7 @@
     "complete": false
   }, {
     "id": 16,
-    "task": "Vacuum floor",
+    "task": "Run roomba",
     "complete": false
   }, {
     "id": 17,
@@ -72,10 +72,10 @@
     "complete": false
   }, {
     "id": 19,
-    "task": "Go to Store",
+    "task": "Do a craft",
     "complete": false
   }, {
     "id": 20,
-    "task": "Fill gas tank",
+    "task": "Clean up patio",
     "complete": false
   }]
