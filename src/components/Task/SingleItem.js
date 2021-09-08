@@ -1,27 +1,40 @@
 import './SingleItem.css'
 import { useState } from 'react'
 
-export default function SingleItem({inCompleted, deleteTask, setTodoList}) {
+export default function SingleItem({inCompleted, deleteTask}) {
 
-    let number = Math.floor(Math.random() * inCompleted.length - 2)
+    let number = Math.floor(Math.random() * inCompleted.length)
     const [todo, setTodo] = useState(inCompleted[number])
 
     const findRandom = () => {
         console.log(todo)
-        number = Math.floor(Math.random(0, inCompleted.length - 1) * 10)
-        console.log("new number:", number)
+        number = Math.floor(Math.random() * inCompleted.length - 1)
+        number === -1 ? number = 0 : console.log(number)
         setTodo(inCompleted[number])
     }
 
     const completeTask = () => {
-        if (todo){
+        if (todo && inCompleted.length > 1){
         deleteTask(todo.id)
         findRandom()
-        } else {
+        }
+        else if (todo && inCompleted.length === 1){
+            lastOne()
+        }
+        else {
             allOut()
         }
-    }
+        }
 
+    const lastOne = () => {
+        return (
+            <div>
+                <h1>Last One!</h1>
+                <h3>{todo.task}</h3>
+            </div>
+        )
+    }
+    
     const allOut = () =>{
     if (inCompleted.length === 0){
         return (

@@ -31,8 +31,17 @@ function App() {
 
 
   const deleteTask = (id) => {
-    handleToggle(id)
+    removeTask(id)
     handleStressed()
+  }
+
+  const removeTask = (id) => {
+    let mapped = toDoList.map(task => {
+      // eslint-disable-next-line
+      return task.id == id ? { ...task, complete: true } : { ...task };
+    });
+
+    setToDoList(mapped);
   }
 
   const handleFilter = () => {
@@ -53,7 +62,7 @@ function App() {
 
   const handleStressed = () => {
     if (stressed) {
-      return <SingleItem inCompleted={inCompleted} handleToggle={handleToggle} deleteTask={deleteTask} />
+      return <SingleItem inCompleted={inCompleted} deleteTask={deleteTask} />
     } else {
       return <List toDoList={toDoList} handleFilter={handleFilter} handleToggle={handleToggle} addTask={addTask} showCompleted={showCompleted} setShowCompleted={setShowCompleted} />
     }
