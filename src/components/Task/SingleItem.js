@@ -1,14 +1,15 @@
 import './SingleItem.css'
 import { useState } from 'react'
 
-export default function SingleItem({inCompleted, deleteTask}) {
+export default function SingleItem({inCompleted, deleteTask, setTodoList}) {
 
-    let number = Math.floor(Math.random(0, inCompleted.length - 1) * 10)
+    let number = Math.floor(Math.random() * inCompleted.length - 2)
     const [todo, setTodo] = useState(inCompleted[number])
 
     const findRandom = () => {
         console.log(todo)
         number = Math.floor(Math.random(0, inCompleted.length - 1) * 10)
+        console.log("new number:", number)
         setTodo(inCompleted[number])
     }
 
